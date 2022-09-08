@@ -58,11 +58,14 @@ SELECT * FROM users WHERE id=1xxxx(随意、怎么舒服怎么来！) LIMIT 0,1
 
 ## 信息收集：
 > 数据库版本：version（）5.7.22-0ubuntu0.16.04.1
+5.7.26-log
 数据库名字：database（）mozhe_Discuz_StormGroup
+techtrek
 数据库用户：user（） root@localhost
+techtrek@172.17.201.244
 操作系统： @@version_compile_os Linux
 
-> 必要知识点：在MySQL5.0以上版本中，MySQL存在一个自带数据库名为 information_schema ，它是一个存储记录所有数据库名，表名，列名的数据库，也相当于可以通过查询它获取指定数据库下面的表名或者列名信息。
+> 必要知识点：在MySQL5.0以上版本中，MySQL存在一个自带数据库名为 information_schema ，它是一个存储记录所有数据库名  ，表名，列名的数据库，也相当于可以通过查询它获取指定数据库下面的表名或者列名信息。
 
 > 数据库中符号“.”代表下一级，如xiao.user表示xiao数据库下的user表名
 information_schema.tables; 记录所有表名信息的表
